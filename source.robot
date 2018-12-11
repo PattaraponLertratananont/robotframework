@@ -15,16 +15,16 @@ ClickTag
     Click Element    ${btn_sp}
     Select Window    locator=NEW
 SearchComment
-    ${compare}    Get Element Count    xpath=//div[@id="show_topic_lists"]/div
-    Log To Console    have comment : ${compare}
-    :FOR  ${index}  IN RANGE    0    ${compare}
-    \    ${e}    Get Element Count   xpath=//div[@class[contains(.,'post-item')]][${index}]//div[@class="post-item-by"]/div[@class="post-item-status-i"]
-    \    Run Keyword If    ${e}>0    Run Keywords    Set Variable public    ${index}    AND    Exit For Loop
+    ${round}    Get Element Count    xpath=//div[@id="show_topic_lists"]/div
+    Log To Console    have comment : ${round}
+    :FOR  ${index}  IN RANGE    0    ${round}
+    \    ${count_comment}    Get Element Count   xpath=//div[@class[contains(.,'post-item')]][${index}]//div[@class="post-item-by"]/div[@class="post-item-status-i"]
+    \    Run Keyword If    ${count_comment}>0    Run Keywords    Set Variable public    ${index}    AND    Exit For Loop
     Log To Console    post_comment : ${index}
 Set Variable public
     [Arguments]    ${index}
     Set Global Variable    ${first_comment}    ${index}
-SelectWindowwwwww    
+Select New Window    
     Click Element    xpath=//div[@id="show_topic_lists"]/div[@class[contains(.,'post-item')]][${first_comment}]/div[@class="post-item-title"]/a
     ${window}    Get Text    xpath=//div[@id="show_topic_lists"]/div[@class[contains(.,'post-item')]][${first_comment}]/div[@class="post-item-title"]
     Select Window    ${window} - Pantip

@@ -10,5 +10,5 @@ Tag
 Serach
     SearchComment
 GetPost
-    SelectWindowwwwww
+    Select New Window
     In to Post
